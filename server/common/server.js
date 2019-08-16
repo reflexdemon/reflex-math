@@ -29,7 +29,7 @@ export default class ExpressServer {
     app.use(Express.static(`${root}/public`));
 
     const apiSpecPath = path.join(__dirname, 'api.yml');
-    app.use(process.env.OPENAPI_SPEC || '/spec', Express.static(apiSpecPath));
+    app.use(process.env.OPENAPI_SPEC || '/api/v1/spec', Express.static(apiSpecPath));
     new OpenApiValidator({
       apiSpecPath,
     }).install(app);
