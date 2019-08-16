@@ -4,7 +4,7 @@
   "description": "Reflex Math API",
   "main": "index.js",
   "scripts": {
-    "start": "PORT=$PORT node dist/index.js",
+    "start": "defaultLevel=INFO PORT=$PORT node dist/index.js",
     "compile": "babel server --out-dir dist --delete-dir-on-start --source-maps inline --copy-files",
     "build": "babel server --out-dir dist --delete-dir-on-start --source-maps inline --copy-files",
     "dev": "nodemon server --exec babel-node --config .nodemonrc.json | pino-pretty",
@@ -42,5 +42,5 @@
     "prettier": "^1.18.2",
     "supertest": "^4.0.2"
   },
-  "author": "Carmine DiMascio <cdimascio@gmail.com> (https://github.com/cdimascio)"
+  "author": "Venkateswara VP <contact@vpv.io> (https://github.com/reflexdemon)"
 }
