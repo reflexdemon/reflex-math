@@ -1,0 +1,254 @@
+openapi: 3.0.0
+info:
+  description: REST API for Generating Simple Math Problems
+  version: "1.0"
+  title: Math Problem Generator API
+  termsOfService: http://me.vpv.io
+  contact:
+    name: Venkateswara VP
+    url: https://contact.vpv.io
+    email: contact@vpv.io
+  license:
+    name: Venkateswara VP
+    url: http://me.vpv.io
+tags:
+  - name: problem-generator-api
+    description: Problem Generator API
+paths:
+  /api/add:
+    get:
+      tags:
+        - problem-generator-api
+      summary: getAddProblems
+      operationId: getAddProblemsUsingGET
+      parameters:
+        - name: max
+          in: query
+          description: max
+          required: false
+          schema:
+            type: string
+            default: "100"
+        - name: min
+          in: query
+          description: min
+          required: false
+          schema:
+            type: string
+            default: "10"
+        - name: size
+          in: query
+          description: size
+          required: false
+          schema:
+            type: string
+            default: "10"
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProblemStatement"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      deprecated: false
+  /api/addsub:
+    get:
+      tags:
+        - problem-generator-api
+      summary: shuffleAddAndSubtract
+      operationId: shuffleAddAndSubtractUsingGET
+      parameters:
+        - name: max
+          in: query
+          description: max
+          required: false
+          schema:
+            type: string
+            default: "10"
+        - name: min
+          in: query
+          description: min
+          required: false
+          schema:
+            type: string
+            default: "2"
+        - name: size
+          in: query
+          description: size
+          required: false
+          schema:
+            type: string
+            default: "10"
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProblemStatement"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      deprecated: false
+  /api/div:
+    get:
+      tags:
+        - problem-generator-api
+      summary: getDivProblems
+      operationId: getDivProblemsUsingGET
+      parameters:
+        - name: max
+          in: query
+          description: max
+          required: false
+          schema:
+            type: string
+            default: "10"
+        - name: min
+          in: query
+          description: min
+          required: false
+          schema:
+            type: string
+            default: "2"
+        - name: size
+          in: query
+          description: size
+          required: false
+          schema:
+            type: string
+            default: "10"
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProblemStatement"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      deprecated: false
+  /api/mul:
+    get:
+      tags:
+        - problem-generator-api
+      summary: getMulProblems
+      operationId: getMulProblemsUsingGET
+      parameters:
+        - name: max
+          in: query
+          description: max
+          required: false
+          schema:
+            type: string
+            default: "10"
+        - name: min
+          in: query
+          description: min
+          required: false
+          schema:
+            type: string
+            default: "2"
+        - name: size
+          in: query
+          description: size
+          required: false
+          schema:
+            type: string
+            default: "10"
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProblemStatement"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      deprecated: false
+  /api/sub:
+    get:
+      tags:
+        - problem-generator-api
+      summary: getSubProblems
+      operationId: getSubProblemsUsingGET
+      parameters:
+        - name: max
+          in: query
+          description: max
+          required: false
+          schema:
+            type: string
+            default: "100"
+        - name: min
+          in: query
+          description: min
+          required: false
+          schema:
+            type: string
+            default: "10"
+        - name: size
+          in: query
+          description: size
+          required: false
+          schema:
+            type: string
+            default: "10"
+      responses:
+        "200":
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProblemStatement"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      deprecated: false
+components:
+  schemas:
+    ProblemStatement:
+      type: object
+      properties:
+        answer:
+          type: integer
+          format: int32
+        firstNumber:
+          type: integer
+          format: int32
+        operator:
+          type: string
+        secondNumber:
+          type: integer
+          format: int32
+      title: ProblemStatement
