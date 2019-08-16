@@ -1,1 +1,1 @@
-web: LOG_LEVEL=INFO APP_ID=reflex-math PORT=$PORT node dist/index.js
+web: LOG_LEVEL=info APP_ID=reflex-math PORT=$PORT node dist/index.js
