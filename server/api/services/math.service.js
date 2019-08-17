@@ -1,12 +1,11 @@
 import l from '../../common/logger';
-import MathProblemService  from '../services/mathproblem.service';
-
+import MathProblemService from '../services/mathproblem.service';
 
 class MathService {
   add(min, max, size) {
     l.info(`${this.constructor.name}.add(${min}, ${max}, ${size})`);
     var result = [];
-    for (var index=0; index < size; index++) {
+    for (var index = 0; index < size; index++) {
       var obj = MathProblemService.add(min, max);
       result.push(obj);
     }
@@ -16,7 +15,7 @@ class MathService {
   sub(min, max, size) {
     l.info(`${this.constructor.name}.sub(${min}, ${max}, ${size})`);
     var result = [];
-    for (var index=0; index < size; index++) {
+    for (var index = 0; index < size; index++) {
       var obj = MathProblemService.sub(min, max);
       result.push(obj);
     }
@@ -26,7 +25,7 @@ class MathService {
   mul(min, max, size) {
     l.info(`${this.constructor.name}.mul(${min}, ${max}, ${size})`);
     var result = [];
-    for (var index=0; index < size; index++) {
+    for (var index = 0; index < size; index++) {
       var obj = MathProblemService.mul(min, max);
       result.push(obj);
     }
@@ -36,7 +35,7 @@ class MathService {
   div(min, max, size) {
     l.info(`${this.constructor.name}.div(${min}, ${max}, ${size})`);
     var result = [];
-    for (var index=0; index < size; index++) {
+    for (var index = 0; index < size; index++) {
       var obj = MathProblemService.div(min, max);
       result.push(obj);
     }
@@ -46,9 +45,9 @@ class MathService {
   addsub(min, max, size) {
     l.info(`${this.constructor.name}.addsub(${min}, ${max}, ${size})`);
     var result = [];
-    for (var index=0; index < size; index++) {
+    for (var index = 0; index < size; index++) {
       var obj = null;
-      if (MathProblemService.getRandomInt(0,1)) {
+      if (MathProblemService.getRandomInt(0, 1)) {
         obj = MathProblemService.add(min, max);
       } else {
         obj = MathProblemService.sub(min, max);
@@ -57,7 +56,6 @@ class MathService {
     }
     return Promise.resolve(result);
   }
-  
 }
 
 export default new MathService();
