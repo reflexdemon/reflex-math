@@ -10,14 +10,21 @@ import errorHandler from '../api/middlewares/error.handler';
 // import rts from '../api/controllers/examples/router';
 
 import l from './logger';
-
+import middlewareStackPrinter from 'middleware-stack-printer';
 const app = new Express();
 
 export default class ExpressServer {
   constructor() {
+    console.log = l.info;
     const root = path.normalize(`${__dirname}/../..`);
     l.info(`appPath = ${root}client`);
     app.set('appPath', `${root}client`);
+    app.use(
+      middlewareStackPrinter({
+        hideAnon: true,
+        printStack: true,
+      })
+    );
     app.use(bodyParser.json({ limit: process.env.REQUEST_LIMIT || '100kb' }));
     app.use(
       bodyParser.urlencoded({
@@ -31,11 +38,13 @@ export default class ExpressServer {
     app.engine(
       '.hbs',
       expressHbs({
-        defaultLayout: 'layout',
+        defaultLayout: 'layouts/layout',
         extname: '.hbs',
       })
     );
     app.set('view engine', '.hbs');
+    const views = path.join(__dirname, 'views');
+    app.set('views', views);
 
     const apiSpecPath = path.join(__dirname, 'api.yml');
     app.use(
@@ -49,6 +58,7 @@ export default class ExpressServer {
 
   router(routes) {
     routes(app);
+    // l.info('Routs for the app is as follows:', app.route);
     app.use(errorHandler);
 
     return this;
